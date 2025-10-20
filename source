@@ -309,12 +309,55 @@ local themes = {
     }
 }
 
--- Função para animar o tema RGB
-local function animateRGBTheme()
-    local time = 0
-    local speed = 2
+-- Variável para controlar se o tema RGB está ativo
+local currentTheme = "Dark"
+local isRGBAnimating = false
+
+-- Função para aplicar o tema (você já deve ter essa função)
+function Library:ApplyTheme(themeName)
+    currentTheme = themeName
+    local theme = themes[themeName]
     
-    while true do
+    if themeName == "RGB" then
+        if not isRGBAnimating then
+            startRGBAnimation()
+        end
+    else
+        isRGBAnimating = false
+        -- Aplica o tema normal aqui
+        applyStaticTheme(theme)
+    end
+end
+
+-- Função para aplicar tema estático (sem animação)
+function applyStaticTheme(theme)
+    -- Sua lógica existente para aplicar cores estáticas
+    -- Isso deve atualizar todas as cores da UI
+end
+
+-- Função para atualizar cores RGB na UI em tempo real
+function updateRGBColors(rgbColor)
+    if currentTheme ~= "RGB" then return end
+    
+    -- Atualiza as cores na tabela do tema
+    themes.RGB.Main = rgbColor
+    themes.RGB.Function.Toggle.True['Toggle Value'] = rgbColor
+    themes.RGB.Function.Slider['Slider Bar Value'] = rgbColor
+    themes.RGB.Function.Button.Click = rgbColor
+    themes.RGB.Function.Keybind.True['Toggle Value'] = rgbColor
+    
+    -- Aqui você precisa chamar a função que atualiza as cores na UI
+    -- Isso depende de como sua library funciona
+    updateUIWithCurrentTheme()
+end
+
+-- Função para iniciar animação RGB
+function startRGBAnimation()
+    isRGBAnimating = true
+    local time = 0
+    local speed = 3
+    
+    while isRGBAnimating and currentTheme == "RGB" do
         time = time + task.wait()
         
         local r = math.floor(math.sin(time * speed) * 127 + 128)
@@ -322,19 +365,37 @@ local function animateRGBTheme()
         local b = math.floor(math.sin(time * speed + 4) * 127 + 128)
         
         local rgbColor = Color3.fromRGB(r, g, b)
-        
-        if themes.RGB then
-            themes.RGB.Main = rgbColor
-            themes.RGB.Function.Toggle.True['Toggle Value'] = rgbColor
-            themes.RGB.Function.Slider['Slider Bar Value'] = rgbColor
-            themes.RGB.Function.Button.Click = rgbColor
-            themes.RGB.Function.Keybind.True['Toggle Value'] = rgbColor
+        updateRGBColors(rgbColor)
+    end
+end
+
+-- Função para atualizar a UI (você precisa adaptar isso para sua library)
+function updateUIWithCurrentTheme()
+    local theme = themes[currentTheme]
+    
+    -- Aqui você precisa implementar a lógica para atualizar
+    -- todos os elementos da UI com as cores do tema atual
+    
+    -- Exemplo genérico:
+    for elementName, elementColor in pairs(theme) do
+        if typeof(elementColor) == "Color3" then
+            -- Atualizar elementos principais
+            updateElementColor(elementName, elementColor)
+        elseif typeof(elementColor) == "table" then
+            -- Atualizar elementos funcionais
+            updateFunctionalElements(elementName, elementColor)
         end
     end
 end
 
--- Iniciar animação
-coroutine.wrap(animateRGBTheme)()
+-- Funções de exemplo (substitua pelas suas)
+function updateElementColor(elementName, color)
+    -- Sua lógica para atualizar elementos UI
+end
+
+function updateFunctionalElements(category, elements)
+    -- Sua lógica para atualizar elementos funcionais
+end
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "Dummy Kawaii"
