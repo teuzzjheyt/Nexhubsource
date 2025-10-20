@@ -156,6 +156,82 @@ local themes = {
 		}
 	},
 }
+Christmas = {
+	['Shadow'] = Color3.fromRGB(120, 0, 0),
+	['Background'] = Color3.fromRGB(0, 60, 30),
+	['Page'] = Color3.fromRGB(0, 40, 20),
+	['Main'] = Color3.fromRGB(200, 0, 0),
+	['Text & Icon'] = Color3.fromRGB(255, 255, 255),
+	['Function'] = {
+		['Toggle'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['True'] = {
+				['Toggle Background'] = Color3.fromRGB(0, 100, 50),
+				['Toggle Value'] = Color3.fromRGB(255, 215, 0),
+			},
+			['False'] = {
+				['Toggle Background'] = Color3.fromRGB(0, 70, 35),
+				['Toggle Value'] = Color3.fromRGB(60, 60, 60),
+			}
+		},
+		['Label'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+		},
+		['Dropdown'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Value Background'] = Color3.fromRGB(0, 40, 20),
+			['Value Stroke'] = Color3.fromRGB(255, 255, 255),
+			['Dropdown Select'] = {
+				['Background'] = Color3.fromRGB(0, 40, 20),
+				['Search'] = Color3.fromRGB(0, 100, 50),
+				['Item Background'] = Color3.fromRGB(0, 120, 60),
+			}
+		},
+		['Slider'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Value Background'] = Color3.fromRGB(0, 40, 20),
+			['Value Stroke'] = Color3.fromRGB(255, 255, 255),
+			['Slider Bar'] = Color3.fromRGB(0, 100, 50),
+			['Slider Bar Value'] = Color3.fromRGB(255, 215, 0),
+			['Circle Value'] = Color3.fromRGB(255, 255, 255)
+		},
+		['Code'] = {
+			['Background'] = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 80, 40)), ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 80, 40))},
+			['Background Code'] = Color3.fromRGB(0, 120, 60),
+			['Background Code Value'] = Color3.fromRGB(0, 60, 30),
+			['ScrollingFrame Code'] = Color3.fromRGB(200, 200, 200)
+		},
+		['Button'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Click'] = Color3.fromRGB(255, 215, 0)
+		},
+		['Textbox'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Value Background'] = Color3.fromRGB(0, 40, 20),
+			['Value Stroke'] = Color3.fromRGB(255, 255, 255),
+		},
+		['Keybind'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Value Background'] = Color3.fromRGB(0, 40, 20),
+			['Value Stroke'] = Color3.fromRGB(255, 255, 255),
+			['True'] = {
+				['Toggle Background'] = Color3.fromRGB(0, 100, 50),
+				['Toggle Value'] = Color3.fromRGB(255, 215, 0),
+			},
+			['False'] = {
+				['Toggle Background'] = Color3.fromRGB(0, 70, 35),
+				['Toggle Value'] = Color3.fromRGB(60, 60, 60),
+			}
+		},
+		['Color Picker'] = {
+			['Background'] = Color3.fromRGB(0, 80, 40),
+			['Color Select'] = {
+				['Background'] = Color3.fromRGB(0, 40, 20),
+				['UIStroke'] = Color3.fromRGB(255, 255, 255),
+			}
+		}
+	},
+}
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "Dummy Kawaii"
